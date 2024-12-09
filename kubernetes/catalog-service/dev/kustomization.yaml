@@ -56,5 +56,6 @@ secretGenerator:
    - spring.datasource.password=sxctWoXesH
 
 images:
-- name: ghcr.io/upen28/polar-bookshop/catalog-service/dev
+- name: ghcr.io/upen28/polar-bookshop/catalog-service
+  newName: ghcr.io/upen28/polar-bookshop/catalog-service/dev
   newTag: 2060401c5673b06fdcf313ec39135b750ecd133f   
