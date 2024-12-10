@@ -10,9 +10,6 @@ spec:
       canary:
          maxSurge: 25%
          maxUnavailable: 0
-         steps:
-         -  setWeight: 10
-         -  pause: {}
    selector:
       matchLabels:
          app: catalog-service
