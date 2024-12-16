@@ -24,18 +24,17 @@ jobs:
         with:
           kustomize: latest
           kubeconform: latest
+      
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
 
       - name: Validate Kubernetes Manifests
         run: |
           cd kubernetes/${{ env.APP_NAME }}/${{ env.APP_DIR_NAME }}
           kustomize build . | kubeconform --strict -
-      
-      - name: Checkout Source Code
-        uses: actions/checkout@v4
 
       - name: Update Image Version
         run: |
-          cd kubernetes/${{ env.APP_NAME }}/${{ env.APP_DIR_NAME }}
           sed -i 's/newTag:\s\+\w*/newTag: ${{ env.APP_VERSION }}/' kustomization.yaml
 
       - name: Commit Updated Manifests
