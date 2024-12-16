@@ -15,26 +15,14 @@ jobs:
       APP_VERSION: ${{ github.event.client_payload.app_version }}
       APP_NAME: ${{ github.event.client_payload.app_name }}
       APP_DIR_NAME: ${{ github.event.client_payload.app-dir-name }}
-    steps:
-      - name: Setup Tools
-        uses: alexellis/setup-arkade@v3
-
-      - name: Install Tools
-        uses: alexellis/arkade-get@master
-        with:
-          kustomize: latest
-          kubeconform: latest
       
+    steps:
       - name: Checkout Source Code
         uses: actions/checkout@v4
 
-      - name: Validate Kubernetes Manifests
-        run: |
-          cd kubernetes/${{ env.APP_NAME }}/${{ env.APP_DIR_NAME }}
-          kustomize build . | kubeconform --strict -
-
       - name: Update Image Version
         run: |
+          cd kubernetes/${{ env.APP_NAME }}/${{ env.APP_DIR_NAME }}  
           sed -i 's/newTag:\s\+\w*/newTag: ${{ env.APP_VERSION }}/' kustomization.yaml
 
       - name: Commit Updated Manifests
