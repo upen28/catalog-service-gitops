@@ -27,7 +27,8 @@ jobs:
 
       - name: Validate Kubernetes Manifests
         run: |
-          kustomize build k8s | kubeconform --strict -
+          cd kubernetes/${{ env.APP_NAME }}/${{ env.APP_DIR_NAME }}
+          kustomize build . | kubeconform --strict -
       
       - name: Checkout Source Code
         uses: actions/checkout@v4
