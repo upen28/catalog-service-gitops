@@ -53,7 +53,7 @@ configMapGenerator:
 secretGenerator:
 -  name: catalog-secrets
    literals:
-   - spring.datasource.password=admin
+   - spring.datasource.password=KkY9ht73TO
 
 images:
 - name: ghcr.io/upen28/polar-bookshop/catalog-service
