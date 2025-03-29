@@ -1,6 +1,6 @@
 spring:
    datasource:
-      url: jdbc:postgresql://my-release-postgresql-0.default.svc.cluster.local:5432/polardb_catalog
+      url: jdbc:postgresql://postgres-db-postgresql.default.svc.cluster.local:5432/polardb_catalog
       username: postgres
    config:
      import: configtree:/workspace/secrets/*/  
